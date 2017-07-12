@@ -1,0 +1,2 @@
+<button pButton type="button" (click)="login()" label="Login" *ngIf="!(authState$ | async)?.loggedIn"></button>
+<button pButton type="button" (click)="logout()" label="Logout" *ngIf="(authState$ | async)?.loggedIn"></button>

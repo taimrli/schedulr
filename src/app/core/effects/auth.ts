@@ -1,0 +1,50 @@
+import {Injectable} from "@angular/core";
+import {Effect, Actions} from '@ngrx/effects';
+import {AuthService} from "../services/auth.service";
+import {
+  LOAD_AUTH_STATE, LoadAuthStateAction, LOGIN, LoginFailureAction, LoginSuccessAction,
+  LOGOUT, LogoutSuccessAction
+} from "../actions/auth";
+import {Observable} from "rxjs/Observable";
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/startWith';
+import {of} from 'rxjs/observable/of';
+import {Action} from "@ngrx/store";
+
+@Injectable()
+export class AuthEffects {
+
+  @Effect()
+  loadUser$: Observable<Action> = this.actions$
+    .ofType(LOAD_AUTH_STATE)
+    .startWith(new LoadAuthStateAction())
+    .switchMap((action) => {
+      return this.authService.user
+        .switchMap((user) => {
+          if (user) {
+            return of(new LoginSuccessAction());
+          } else {
+            return of(new LogoutSuccessAction());
+          }
+        })
+    });
+
+  @Effect({dispatch: false})
+  loginUser$: Observable<any> = this.actions$
+    .ofType(LOGIN)
+    .switchMap((action) => {
+      return this.authService.login()
+    });
+
+  @Effect({dispatch: false})
+  logoutUser$: Observable<any> = this.actions$
+    .ofType(LOGOUT)
+    .switchMap((action) => {
+      return this.authService.logout()
+    });
+
+  constructor(private actions$: Actions, private authService: AuthService) {
+  }
+}
