@@ -36,9 +36,7 @@ import {AuthService} from "./core/services/auth.service";
     RouterStoreModule.connectRouter(),
 
     StoreModule.provideStore(reducer, initialState),
-    StoreDevtoolsModule.instrumentOnlyWithExtension({
-      maxAge: 5
-    }),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
 
     EffectsModule.run(AuthEffects),
 
