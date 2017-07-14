@@ -1,6 +1,6 @@
 import {GenericProperty} from "./generic-property";
 import {Lane} from "./lane";
-export class Track {
+export interface Track {
 
   properties: GenericProperty[];
   inLanes: Lane[];

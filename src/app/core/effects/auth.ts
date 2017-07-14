@@ -20,8 +20,8 @@ export class AuthEffects {
   loadUser$: Observable<Action> = this.actions$
     .ofType(LOAD_AUTH_STATE)
     .startWith(new LoadAuthStateAction())
-    .switchMap((action) => {
-      return this.authService.user
+    .switchMap((action) =>
+      this.authService.user
         .switchMap((user) => {
           if (user) {
             return of(new LoginSuccessAction());
@@ -29,21 +29,21 @@ export class AuthEffects {
             return of(new LogoutSuccessAction());
           }
         })
-    });
+    );
 
   @Effect({dispatch: false})
   loginUser$: Observable<any> = this.actions$
     .ofType(LOGIN)
-    .switchMap((action) => {
-      return this.authService.login()
-    });
+    .switchMap((action) =>
+      this.authService.login()
+    );
 
   @Effect({dispatch: false})
   logoutUser$: Observable<any> = this.actions$
     .ofType(LOGOUT)
-    .switchMap((action) => {
-      return this.authService.logout()
-    });
+    .switchMap((action) =>
+      this.authService.logout()
+    );
 
   constructor(private actions$: Actions, private authService: AuthService) {
   }

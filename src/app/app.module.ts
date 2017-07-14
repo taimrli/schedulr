@@ -18,6 +18,8 @@ import {AngularFireAuthModule} from "angularfire2/auth";
 import {EffectsModule} from "@ngrx/effects";
 import {AuthEffects} from "./core/effects/auth";
 import {AuthService} from "./core/services/auth.service";
+import {EventEffects} from "app/core/effects/event";
+import {DbService} from "./core/services/db.service";
 
 @NgModule({
   declarations: [
@@ -39,13 +41,15 @@ import {AuthService} from "./core/services/auth.service";
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
 
     EffectsModule.run(AuthEffects),
+    EffectsModule.run(EventEffects),
 
     CoreModule,
     SharedModule,
     FeatureModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    DbService
   ],
   bootstrap: [AppComponent]
 })

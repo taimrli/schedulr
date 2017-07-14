@@ -1,24 +1,22 @@
 import {Action} from "@ngrx/store";
 import {Track} from "../model/track";
 import {Lane} from "../model/lane";
+import {SchedulrEvent} from "../model/schedulr-event";
 
 export const CREATE_EVENT = '[event] create empty event';
 export class CreateEventAction implements Action {
   type = CREATE_EVENT;
 }
 
-export const ADD_TRACK = '[event] add track to event';
-export class AddTrackAction implements Action {
-  type = ADD_TRACK;
-
-  constructor(public payload: Track) {
-  }
+export const LOAD_EVENT_ADMINISTRATIONS = '[event] load all event administrations';
+export class LoadEventAdministrationsAction implements Action {
+  type = LOAD_EVENT_ADMINISTRATIONS;
 }
 
-export const ADD_LANE = '[event] add lane to event';
-export class AddLaneAction implements Action {
-  type = ADD_LANE;
+export const EVENT_ADMINISTRATIONS_LOADED = '[event] event administrations loaded';
+export class EventAdministrationsLoadedAction implements Action {
+  type = EVENT_ADMINISTRATIONS_LOADED;
 
-  constructor(public payload: Lane) {
+  constructor(public payload: SchedulrEvent[]) {
   }
 }

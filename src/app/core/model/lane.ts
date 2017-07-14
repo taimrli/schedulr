@@ -1,5 +1,5 @@
 import {GenericProperty} from "./generic-property";
-export class Lane {
+export interface Lane {
 
   properties: GenericProperty[];
 

@@ -3,7 +3,7 @@ import {HomeComponent} from "./home/home.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {ProfileEditComponent} from "./profile/profile-edit.component";
 import {LoginComponent} from "./login/login.component";
-import {EventsComponent} from "./events/events.component";
+import {EventsComponent} from "./eventAdministrations/events.component";
 
 export const appRoutes: Routes = [
   {path: 'profile', component: ProfileComponent},

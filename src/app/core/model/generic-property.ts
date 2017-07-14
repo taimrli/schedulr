@@ -1,4 +1,4 @@
-export class GenericProperty {
+export interface GenericProperty {
 
   name: String;
 

@@ -5,16 +5,21 @@ import {ProfileComponent} from './profile/profile.component';
 import {ProfileEditComponent} from './profile/profile-edit.component';
 import {BrowserModule} from "@angular/platform-browser";
 import {LoginComponent} from './login/login.component';
-import {ButtonModule, MenubarModule} from "primeng/primeng";
+import {ButtonModule, MenubarModule, PanelModule, TabViewModule} from "primeng/primeng";
 import {NavComponent} from './nav/nav.component';
-import { EventsComponent } from './events/events.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {EventDetailComponent} from "./eventAdministrations/event-detail.component";
+import {EventsComponent} from "./eventAdministrations/events.component";
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     ButtonModule,
     MenubarModule,
+    PanelModule,
+    TabViewModule,
   ],
   declarations: [
     HomeComponent,
@@ -22,7 +27,8 @@ import { EventsComponent } from './events/events.component';
     ProfileEditComponent,
     LoginComponent,
     NavComponent,
-    EventsComponent],
+    EventsComponent,
+    EventDetailComponent],
   exports: [
     NavComponent
   ]
