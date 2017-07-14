@@ -1,4 +1,4 @@
-import {LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT, LOGOUT_SUCCESS} from "../actions/auth";
+import {LOGIN, LOGGED_OUT, LOGGED_IN, LOGOUT} from "../actions/auth";
 import {Action} from "@ngrx/store";
 
 export interface AuthState {
@@ -11,13 +11,12 @@ export const initialAuthState: AuthState = {
 
 export function authReducer(state: AuthState, action: Action): AuthState {
   switch (action.type) {
-    case LOGIN_SUCCESS:
+    case LOGGED_IN:
       return Object.assign({}, state, {
         loggedIn: true
       });
 
-    case LOGIN_FAILURE:
-    case LOGOUT_SUCCESS:
+    case LOGGED_OUT:
       return Object.assign({}, state, {
         loggedIn: false
       });

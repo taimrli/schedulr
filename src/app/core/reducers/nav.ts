@@ -1,5 +1,5 @@
 import {MenuItem} from "primeng/primeng";
-import {LOGIN, LOGIN_FAILURE, LOGIN_SUCCESS, LOGOUT, LOGOUT_SUCCESS} from "../actions/auth";
+import {LOGIN, LOGGED_OUT, LOGGED_IN, LOGOUT} from "../actions/auth";
 import {Action} from "@ngrx/store";
 
 export interface NavState {
@@ -54,13 +54,12 @@ export const initialNavState: NavState = {
 
 export function navReducer(state: NavState, action: Action): NavState {
   switch (action.type) {
-    case LOGIN_SUCCESS:
+    case LOGGED_IN:
       return Object.assign({}, state, {
         items: menuItems_loggedIn
       });
 
-    case LOGIN_FAILURE:
-    case LOGOUT_SUCCESS:
+    case LOGGED_OUT:
       return Object.assign({}, state, {
         items: menuItems_loggedOut
       });

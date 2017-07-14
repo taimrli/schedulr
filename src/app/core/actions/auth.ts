@@ -5,14 +5,9 @@ export class LoginAction implements Action {
   type = LOGIN;
 }
 
-export const LOGIN_SUCCESS = '[auth] login success';
-export class LoginSuccessAction implements Action {
-  type = LOGIN_SUCCESS;
-}
-
-export const LOGIN_FAILURE = '[auth] login failure';
-export class LoginFailureAction implements Action {
-  type = LOGIN_FAILURE;
+export const LOGGED_IN = '[auth] user logged in';
+export class LoggedInAction implements Action {
+  type = LOGGED_IN;
 }
 
 export const LOGOUT = '[auth] logout user';
@@ -20,9 +15,9 @@ export class LogoutAction implements Action {
   type = LOGOUT;
 }
 
-export const LOGOUT_SUCCESS = '[auth] logout success';
-export class LogoutSuccessAction implements Action {
-  type = LOGOUT_SUCCESS;
+export const LOGGED_OUT = '[auth] user logged out';
+export class LoggedOutAction implements Action {
+  type = LOGGED_OUT;
 }
 
 export const LOAD_AUTH_STATE = '[auth] load user auth state';

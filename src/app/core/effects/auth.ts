@@ -2,8 +2,8 @@ import {Injectable} from "@angular/core";
 import {Effect, Actions} from '@ngrx/effects';
 import {AuthService} from "../services/auth.service";
 import {
-  LOAD_AUTH_STATE, LoadAuthStateAction, LOGIN, LoginFailureAction, LoginSuccessAction,
-  LOGOUT, LogoutSuccessAction
+  LOAD_AUTH_STATE, LoadAuthStateAction, LOGIN, LoggedOutAction, LoggedInAction,
+  LOGOUT
 } from "../actions/auth";
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/switchMap';
@@ -24,9 +24,9 @@ export class AuthEffects {
       this.authService.user
         .switchMap((user) => {
           if (user) {
-            return of(new LoginSuccessAction());
+            return of(new LoggedInAction());
           } else {
-            return of(new LogoutSuccessAction());
+            return of(new LoggedOutAction());
           }
         })
     );
