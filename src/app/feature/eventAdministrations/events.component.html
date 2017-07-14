@@ -1,0 +1,25 @@
+<div class="ui-g">
+  <div class="ui-g-9 ui-g-nopad">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <p-panel header="Existing events created by you">
+          <p-tabView>
+            <p-tabPanel header="{{event.name}}" *ngFor="let event of (events$ | async)">
+              <app-event-detail [event]="event"></app-event-detail>
+            </p-tabPanel>
+          </p-tabView>
+        </p-panel>
+      </div>
+      <div class="ui-g-12">
+        <p-panel header="Create new">
+          <button pButton type="button" (click)="createEvent()" label="Add"></button>
+        </p-panel>
+      </div>
+    </div>
+  </div>
+  <div class="ui-g-3">
+    <p-panel header="Available Properties">
+      create or select an existing event
+    </p-panel>
+  </div>
+</div>
